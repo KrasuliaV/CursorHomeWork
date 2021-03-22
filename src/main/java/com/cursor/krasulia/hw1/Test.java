@@ -19,7 +19,7 @@ public class Test {
         int[] arr3 = {1, 2, 4, 1};
         System.out.println("Average number in this array: " + HomeWorkClass.average(arr3));
 
-        /*4.You have array {3,2,3,1,4,2,8,3}.
+        /*5.You have array {3,2,3,1,4,2,8,3}.
         Replace all duplicated values by 0. Result should be  next: {3,2,0,1,4,0,8,0}*/
         int[] arr4 = {3, 2, 3, 1, 4, 2, 8, 3};
         System.out.println("Array without duplicate: " + Arrays.toString(HomeWorkClass.replaceDuplicate(arr4)));
