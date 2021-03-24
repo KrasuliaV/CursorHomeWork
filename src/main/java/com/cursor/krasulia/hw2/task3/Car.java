@@ -1,4 +1,4 @@
-package com.cursor.krasulia.hw2;
+package com.cursor.krasulia.hw2.task3;
 
 public class Car {
     private boolean engineIsWorking = false;

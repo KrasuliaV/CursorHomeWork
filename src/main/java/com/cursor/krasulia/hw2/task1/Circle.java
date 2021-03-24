@@ -1,4 +1,4 @@
-package com.cursor.krasulia.hw2;
+package com.cursor.krasulia.hw2.task1;
 
 public class Circle {
     private double radius;

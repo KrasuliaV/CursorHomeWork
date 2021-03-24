@@ -1,4 +1,4 @@
-package com.cursor.krasulia.hw2;
+package com.cursor.krasulia.hw2.task4;
 
 public class Fractions {
     private long fullPart;
@@ -15,5 +15,10 @@ public class Fractions {
 
     public short getFractionalPart() {
         return fractionalPart;
+    }
+
+    @Override
+    public String toString() {
+        return fullPart + "." + fractionalPart;
     }
 }

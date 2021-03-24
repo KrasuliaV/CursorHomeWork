@@ -1,5 +1,8 @@
 package com.cursor.krasulia.hw2;
 
+import com.cursor.krasulia.hw2.task4.Fractions;
+import com.cursor.krasulia.hw2.task4.MathWithFractions;
+
 public class Test {
     public static void main(String[] args) {
 
@@ -27,17 +30,20 @@ public class Test {
 //        usualCar.startEngine();
 //        usualCar.startMove(100);
 //        usualCar.shutsDownTheEngine();
-//
-//        /*4*. Класс Дробное число со знаком (Fractions).
-//        Число должно быть представлено двумя полями:
-//        целая часть - длинное целое, дробная часть - короткое целое.
-//        Реализовать арифметические операции сложения, вычитания, умножения и операции сравнения.
-//        В функции main проверить эти методы.*/
 
+        /*4*. Класс Дробное число со знаком (Fractions).
+        Число должно быть представлено двумя полями:
+        целая часть - длинное целое, дробная часть - короткое целое.
+        Реализовать арифметические операции сложения, вычитания, умножения и операции сравнения.
+        В функции main проверить эти методы.*/
 
+        Fractions firstFractions = new Fractions(56, (short) 569);
+        Fractions secondFractions = new Fractions(20, (short) 723);
+        System.out.printf("%s + %s = %s\n", firstFractions.toString(), secondFractions.toString(), MathWithFractions.sum(firstFractions, secondFractions).toString());
+        System.out.printf("%s - %s = %s\n", firstFractions.toString(), secondFractions.toString(), MathWithFractions.subtraction(firstFractions, secondFractions).toString());
+        System.out.printf("%s * %s = %s\n", firstFractions.toString(), secondFractions.toString(), MathWithFractions.multiply(firstFractions, secondFractions).toString());
+//        System.out.printf("%s + %s = %s", firstFractions.toString(), secondFractions.toString(), MathWithFractions.sum(firstFractions, secondFractions).toString());
     }
-
-
 
 
 }
