@@ -43,4 +43,16 @@ public class Car {
             System.out.println("You must start engine at first");
         }
     }
+
+    public boolean isEngineIsWorking() {
+        return engineIsWorking;
+    }
+
+    public boolean isCarIsMoving() {
+        return carIsMoving;
+    }
+
+    public int getMaxSpeed() {
+        return maxSpeed;
+    }
 }

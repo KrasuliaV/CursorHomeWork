@@ -3,7 +3,7 @@ package com.cursor.krasulia.hw2.task2;
 public class CountingSelfObjectsClass {
     private static long classObjectsNumber = 0;
 
-    CountingSelfObjectsClass() {
+    public CountingSelfObjectsClass() {
         classObjectsNumber++;
     }
 
