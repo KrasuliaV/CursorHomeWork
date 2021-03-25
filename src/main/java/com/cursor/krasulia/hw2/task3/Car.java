@@ -13,8 +13,12 @@ public class Car {
     }
 
     public void startEngine() {
-        engineIsWorking = true;
-        System.out.println("The engine is starting to work");
+        if (engineIsWorking) {
+            System.out.println("The engine is  already running");
+        } else {
+            engineIsWorking = true;
+            System.out.println("The engine is starting to work");
+        }
     }
 
     public void shutsDownTheEngine() {
