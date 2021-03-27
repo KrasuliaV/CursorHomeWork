@@ -40,8 +40,12 @@ public class MathWithMoney {
     private static Money convertToMoney(double result) {
         String resultInString = String.format("%.2f", result);
         long hryvnia = (long) result;
-        byte coin = Byte.parseByte(resultInString.substring(resultInString.indexOf(",") + 1));
+        byte coin;
+        if (resultInString.contains(",")) {
+            coin = Byte.parseByte(resultInString.substring(resultInString.indexOf(",") + 1));
+        } else {
+            coin = Byte.parseByte(resultInString.substring(resultInString.indexOf(".") + 1));
+        }
         return new Money(hryvnia, coin);
     }
-
 }
