@@ -86,11 +86,11 @@ public class Test {
         Money firstCurrency = new Money(15, (byte) 20);
         Money secondCurrency = new Money(20, (byte) 45);
 
-        System.out.printf("%s UAH + %s UAH= %s UAH%n",
+        System.out.printf("%s UAH + %s UAH = %s UAH%n",
                 firstCurrency.toString(),
                 secondCurrency.toString(),
                 MathWithMoney.sum(firstCurrency, secondCurrency).toString());
-        System.out.printf("%s UAH - %s UAH= %s UAH%n",
+        System.out.printf("%s UAH - %s UAH = %s UAH%n",
                 firstCurrency.toString(),
                 secondCurrency.toString(),
                 MathWithMoney.subtraction(firstCurrency, secondCurrency).toString());
