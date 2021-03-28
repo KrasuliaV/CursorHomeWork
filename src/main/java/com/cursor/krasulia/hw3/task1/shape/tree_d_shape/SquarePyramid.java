@@ -1,6 +1,6 @@
-package com.cursor.krasulia.hw3.task1;
+package com.cursor.krasulia.hw3.task1.shape.tree_d_shape;
 
-import com.cursor.krasulia.hw3.task1.abstractShape.SpaceShape;
+import com.cursor.krasulia.hw3.task1.abstract_shape.SpaceShape;
 import com.cursor.krasulia.hw3.task1.vertices.Vertex3D;
 
 public class SquarePyramid extends SpaceShape {

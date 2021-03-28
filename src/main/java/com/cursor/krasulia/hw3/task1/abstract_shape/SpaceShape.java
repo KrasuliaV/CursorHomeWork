@@ -1,22 +1,22 @@
-package com.cursor.krasulia.hw3.task1.abstractShape;
+package com.cursor.krasulia.hw3.task1.abstract_shape;
 
 import com.cursor.krasulia.hw3.task1.measurable.AreaMeasurable;
-import com.cursor.krasulia.hw3.task1.measurable.PerimeterMeasurable;
-import com.cursor.krasulia.hw3.task1.vertices.Vertex2D;
+import com.cursor.krasulia.hw3.task1.measurable.VolumeMeasurable;
+import com.cursor.krasulia.hw3.task1.vertices.Vertex3D;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class PlaneShape extends Shape implements PerimeterMeasurable, AreaMeasurable {
-    List<Vertex2D> verticesList;
+public abstract class SpaceShape extends Shape implements AreaMeasurable, VolumeMeasurable {
+    List<Vertex3D> verticesList;
 
-    public PlaneShape(Vertex2D... vertices) {
+    public SpaceShape(Vertex3D... vertices) {
         verticesList = new ArrayList<>();
         verticesList.addAll(Arrays.asList(vertices));
     }
 
-    public List<Vertex2D> getVerticesList() {
+    public List<Vertex3D> getVerticesList() {
         return verticesList;
     }
 
@@ -25,6 +25,6 @@ public abstract class PlaneShape extends Shape implements PerimeterMeasurable, A
         return "Shape type: " + getClass().getSimpleName().toLowerCase()
                 + ", vertices: " + verticesList.toString()
                 + ", area: " + String.format("%.2f", getArea())
-                + ", perimeter: " + String.format("%.2f", getPerimeter());
+                + ", volume: " + String.format("%.2f", getVolume());
     }
 }

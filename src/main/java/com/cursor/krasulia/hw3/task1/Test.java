@@ -1,6 +1,12 @@
 package com.cursor.krasulia.hw3.task1;
 
-import com.cursor.krasulia.hw3.task1.abstractShape.Shape;
+import com.cursor.krasulia.hw3.task1.abstract_shape.Shape;
+import com.cursor.krasulia.hw3.task1.shape.tree_d_shape.SquarePyramid;
+import com.cursor.krasulia.hw3.task1.shape.two_d_shape.Rectangle;
+import com.cursor.krasulia.hw3.task1.shape.tree_d_shape.Sphere;
+import com.cursor.krasulia.hw3.task1.shape.two_d_shape.Circle;
+import com.cursor.krasulia.hw3.task1.shape.tree_d_shape.Cuboid;
+import com.cursor.krasulia.hw3.task1.shape.two_d_shape.Triangle;
 import com.cursor.krasulia.hw3.task1.vertices.Vertex2D;
 import com.cursor.krasulia.hw3.task1.vertices.Vertex3D;
 

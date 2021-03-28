@@ -1,6 +1,6 @@
-package com.cursor.krasulia.hw3.task1;
+package com.cursor.krasulia.hw3.task1.shape.two_d_shape;
 
-import com.cursor.krasulia.hw3.task1.abstractShape.PlaneShape;
+import com.cursor.krasulia.hw3.task1.abstract_shape.PlaneShape;
 import com.cursor.krasulia.hw3.task1.vertices.Vertex2D;
 
 public class Rectangle extends PlaneShape {
