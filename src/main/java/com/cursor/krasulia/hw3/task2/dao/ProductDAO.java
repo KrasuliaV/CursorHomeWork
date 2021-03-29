@@ -1,20 +1,24 @@
 package com.cursor.krasulia.hw3.task2.dao;
 
-import com.cursor.krasulia.hw3.task2.SecondTaskException;
-import com.cursor.krasulia.hw3.task2.product.Product;
-import com.cursor.krasulia.hw3.task2.product.electonics_product.Appliance;
-import com.cursor.krasulia.hw3.task2.product.electonics_product.Computer;
-import com.cursor.krasulia.hw3.task2.product.food_product.FoodProduct;
+import com.cursor.krasulia.hw3.task2.enteties.AgeRestriction;
+import com.cursor.krasulia.hw3.task2.exception.SecondTaskException;
+import com.cursor.krasulia.hw3.task2.enteties.product.Product;
+import com.cursor.krasulia.hw3.task2.enteties.product.electonics_product.Appliance;
+import com.cursor.krasulia.hw3.task2.enteties.product.electonics_product.Computer;
+import com.cursor.krasulia.hw3.task2.enteties.product.food_product.FoodProduct;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
 
-import static com.cursor.krasulia.hw3.task2.AgeRestriction.*;
+import static com.cursor.krasulia.hw3.task2.enteties.AgeRestriction.*;
 
 public class ProductDAO {
     private static List<Product> productList;
 
-    {
+    static {
         productList = new ArrayList<>();
 
         productList.add(new FoodProduct("Banana", 20, 150, NONE, 30));
@@ -31,6 +35,14 @@ public class ProductDAO {
         productList.add(new Appliance("Refrigerators", 1100.00, 370, NONE));
     }
 
+    public static boolean addProduct(Product product) {
+        return productList.add(product);
+    }
+
+    public static boolean deleteProduct(Product product) {
+        return productList.remove(product);
+    }
+
     public static Product getProductByName(String name) {
         if (name != null) {
             return productList.stream()
@@ -40,6 +52,29 @@ public class ProductDAO {
         } else {
             throw new SecondTaskException("You must get product name!!!");
         }
+    }
+
+    public static Product getProductWithSoonestExpirationDate() {
+        return productList.stream()
+                .filter(prod -> FoodProduct.class.equals(prod.getClass()))
+                .map(FoodProduct.class::cast)
+                .min(Comparator.comparing(FoodProduct::getExpirationDate))
+                .orElseThrow(() -> new SecondTaskException("There are no product with expiration"));
+    }
+
+    public static List<Product> getAgeRestrictionProductListSortedByPriceList(AgeRestriction ageRestriction) {
+        if (ageRestriction != null) {
+            return productList.stream()
+                    .filter(someProduct -> ageRestriction.equals(someProduct.getAgeRestriction()))
+                    .sorted(Comparator.comparing(Product::getPrice))
+                    .collect(Collectors.toList());
+        } else {
+            throw new SecondTaskException("You need age restriction product name!!!");
+        }
+    }
+
+    public static Product getRandomProduct() {
+        return productList.get(new Random().nextInt(productList.size() - 1) + 1);
     }
 
 }

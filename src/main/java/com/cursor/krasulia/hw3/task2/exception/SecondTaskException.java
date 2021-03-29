@@ -1,4 +1,4 @@
-package com.cursor.krasulia.hw3.task2;
+package com.cursor.krasulia.hw3.task2.exception;
 
 public class SecondTaskException extends RuntimeException {
 

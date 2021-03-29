@@ -1,9 +1,15 @@
-package com.cursor.krasulia.hw3.task2;
+package com.cursor.krasulia.hw3.task2.enteties;
 
 public class Customer {
     private String name;
     private int age;
     private double balance;
+
+    public Customer(String name, int age, double balance) {
+        this.name = name;
+        this.age = age;
+        this.balance = balance;
+    }
 
     public String getName() {
         return name;

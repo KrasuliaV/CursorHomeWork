@@ -1,6 +1,6 @@
-package com.cursor.krasulia.hw3.task2.product.electonics_product;
+package com.cursor.krasulia.hw3.task2.enteties.product.electonics_product;
 
-import com.cursor.krasulia.hw3.task2.AgeRestriction;
+import com.cursor.krasulia.hw3.task2.enteties.AgeRestriction;
 
 public class Computer extends ElectonicsProduct {
     public Computer(String name, double price, int quantity, AgeRestriction ageRestriction) {
@@ -10,9 +10,9 @@ public class Computer extends ElectonicsProduct {
     @Override
     public double getPrice() {
         if (super.getQuantity() > 1000) {
-            return getPrice() * 0.95;
+            return super.getPrice() * 0.95;
         } else {
-            return getPrice();
+            return super.getPrice();
         }
     }
 }

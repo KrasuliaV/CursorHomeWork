@@ -1,6 +1,6 @@
-package com.cursor.krasulia.hw3.task2.product.electonics_product;
+package com.cursor.krasulia.hw3.task2.enteties.product.electonics_product;
 
-import com.cursor.krasulia.hw3.task2.AgeRestriction;
+import com.cursor.krasulia.hw3.task2.enteties.AgeRestriction;
 
 public class Appliance extends ElectonicsProduct {
 
@@ -11,9 +11,9 @@ public class Appliance extends ElectonicsProduct {
     @Override
     public double getPrice() {
         if (super.getQuantity() < 50) {
-            return getPrice() * 1.05;
+            return super.getPrice() * 1.05;
         } else {
-            return getPrice();
+            return super.getPrice();
         }
     }
 }

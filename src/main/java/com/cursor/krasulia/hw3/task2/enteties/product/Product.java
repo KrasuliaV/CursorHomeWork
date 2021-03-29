@@ -1,6 +1,6 @@
-package com.cursor.krasulia.hw3.task2.product;
+package com.cursor.krasulia.hw3.task2.enteties.product;
 
-import com.cursor.krasulia.hw3.task2.AgeRestriction;
+import com.cursor.krasulia.hw3.task2.enteties.AgeRestriction;
 
 public class Product implements Buyable {
     private String name;
@@ -45,5 +45,13 @@ public class Product implements Buyable {
 
     public void setAgeRestriction(AgeRestriction ageRestriction) {
         this.ageRestriction = ageRestriction;
+    }
+
+    @Override
+    public String toString() {
+        return name +
+                ", price = " + price +
+                ", quantity = " + quantity +
+                ", ageRestriction = " + ageRestriction;
     }
 }

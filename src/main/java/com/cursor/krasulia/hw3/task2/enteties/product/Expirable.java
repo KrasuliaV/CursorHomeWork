@@ -1,4 +1,4 @@
-package com.cursor.krasulia.hw3.task2.product;
+package com.cursor.krasulia.hw3.task2.enteties.product;
 
 import java.util.Date;
 
