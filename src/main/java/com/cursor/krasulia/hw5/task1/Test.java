@@ -7,9 +7,9 @@ public class Test {
         SinglyLinkedList<String> mySinglyLinkedList = new SinglyLinkedList<>(1);
         System.out.println("SinglyLinkedList size is: " + mySinglyLinkedList.size());
         System.out.println(mySinglyLinkedList.push("First push element"));
-//        System.out.println(mySinglyLinkedList.push("Second push element"));
-//        System.out.println(mySinglyLinkedList.push("Third push element"));
-//        System.out.println(mySinglyLinkedList.push("Forth push element"));
+        System.out.println(mySinglyLinkedList.push("Second push element"));
+        System.out.println(mySinglyLinkedList.push("Third push element"));
+        System.out.println(mySinglyLinkedList.push("Forth push element"));
         System.out.println("SinglyLinkedList size is: " + mySinglyLinkedList.size());
         System.out.println(mySinglyLinkedList.pop());
         try {

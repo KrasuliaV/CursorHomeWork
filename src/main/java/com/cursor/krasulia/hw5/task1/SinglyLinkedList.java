@@ -1,7 +1,6 @@
 package com.cursor.krasulia.hw5.task1;
 
 import java.util.Arrays;
-import java.util.EmptyStackException;
 import java.util.Objects;
 
 public class SinglyLinkedList<E> {
@@ -16,8 +15,6 @@ public class SinglyLinkedList<E> {
         this(10);
     }
 
-//    Methods: push, pop,top, size, isEmpty,
-
     public E push(E element) {
         if (size == elements.length - 1) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
@@ -28,7 +25,8 @@ public class SinglyLinkedList<E> {
     }
 
     public E pop() {
-        if (size == 0) throw new EmptyStackException();
+//        if (size == 0) throw new EmptyStackException();
+        if (size == 0) return null;
         E element = elements[size - 1];
         elements[size - 1] = null;
         size--;
@@ -36,7 +34,8 @@ public class SinglyLinkedList<E> {
     }
 
     public E top() {
-        if (size == 0) throw new EmptyStackException();
+//        if (size == 0) throw new EmptyStackException();
+        if (size == 0) return null;
         return elements[size - 1];
     }
 
