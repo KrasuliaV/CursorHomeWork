@@ -20,16 +20,20 @@ public class PersonMakeCollector implements Collector<String, List<Person>, List
 
     @Override
     public BiConsumer<List<Person>, String> accumulator() {
-        return (list, val1) -> {
-            if (list.isEmpty() && val1 == null) new ArrayList<Person>();
-            else if (list.isEmpty() || list.get(list.size() - 1).getSecondName() != null) {
-                Person newPerson = new Person();
-                newPerson.setFirstName(val1);
-                list.add(newPerson);
-            } else {
-                list.get(list.size() - 1).setSecondName(val1);
-            }
-        };
+        return toAccumulator;
+    }
+
+    public final BiConsumer<List<Person>, String> toAccumulator = this::makeAccumulator;
+
+    private void makeAccumulator(List<Person> personList, String str) {
+        if (personList.isEmpty() && str == null) new ArrayList<Person>();
+        else if (personList.isEmpty() || personList.get(personList.size() - 1).getSecondName() != null) {
+            Person newPerson = new Person();
+            newPerson.setFirstName(str);
+            personList.add(newPerson);
+        } else {
+            personList.get(personList.size() - 1).setSecondName(str);
+        }
     }
 
     @Override
@@ -53,5 +57,4 @@ public class PersonMakeCollector implements Collector<String, List<Person>, List
     public static PersonMakeCollector toPersonList() {
         return new PersonMakeCollector();
     }
-
 }
