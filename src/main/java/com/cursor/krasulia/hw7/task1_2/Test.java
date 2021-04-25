@@ -32,6 +32,7 @@ public class Test {
         System.out.println(Util.getSetWithNameAndGender(people));
 
         System.out.println("\nSecond task");
-        System.out.println(Util.getPersonMappingByContinents(people));
+//        System.out.println(Util.getPersonMappingByContinents(people));
+        Util.getPersonMappingByContinents(people);
     }
 }

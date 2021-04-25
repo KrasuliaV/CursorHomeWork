@@ -9,7 +9,6 @@ public class PingPongGame {
     public PingPongGame() {
     }
 
-
     public PingPongGame(long gameTime) {
         this.gameTime = gameTime;
     }
