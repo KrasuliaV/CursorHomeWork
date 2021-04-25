@@ -9,6 +9,7 @@ public class PingPongGame {
     public PingPongGame() {
     }
 
+
     public PingPongGame(long gameTime) {
         this.gameTime = gameTime;
     }
@@ -21,8 +22,21 @@ public class PingPongGame {
                 ex.printStackTrace();
             }
         }
-        System.out.println("Ping");
+     System.out.println("Ping");
         flag = true;
+        notifyAll();
+    }
+
+    public synchronized void sayPong() {
+        while (!flag) {
+          try {
+                wait();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+    System.out.println("\tPong");
+        flag = false;
         notifyAll();
     }
 
