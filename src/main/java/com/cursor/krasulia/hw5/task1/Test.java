@@ -20,6 +20,5 @@ public class Test {
         System.out.println("SinglyLinkedList size is: " + mySinglyLinkedList.size());
         System.out.println(mySinglyLinkedList);
         System.out.println("Top element is: " + mySinglyLinkedList.top());
-
     }
 }
