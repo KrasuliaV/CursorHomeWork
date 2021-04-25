@@ -9,17 +9,38 @@ public class PingPongGame {
     public PingPongGame() {
     }
 
-    public synchronized void sayPong() {
-        while (!flag) {
+
+    public PingPongGame(long gameTime) {
+        this.gameTime = gameTime;
+    }
+
+    public synchronized void sayPing() {
+        while (flag) {
             try {
                 wait();
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }
         }
-        System.out.println("\tPong");
+     System.out.println("Ping");
+        flag = true;
+        notifyAll();
+    }
+
+    public synchronized void sayPong() {
+        while (!flag) {
+          try {
+                wait();
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+    System.out.println("\tPong");
         flag = false;
         notifyAll();
     }
 
+    public long getGameTime() {
+        return gameTime;
+    }
 }
