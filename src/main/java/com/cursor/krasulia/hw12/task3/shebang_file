@@ -1,6 +1,6 @@
 #!/c/corretto-15.0.2/bin/java --source 15
 
-import com.cursor.krasulia.hw12.MainMenu;
+import com.cursor.krasulia.hw12.task3.MainMenu;
 
 public class ShebangClass {
     public static void main(String[] args) {
