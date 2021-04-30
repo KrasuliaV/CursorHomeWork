@@ -1,8 +1,8 @@
-#!/c/corretto-15.0.2/bin/java --source 15
+#!/c/corretto-15.0.2/bin/java --source15
 
 import com.cursor.krasulia.hw12.MainMenu;
 
-public class ShebangClass {
+public class Shebang {
     public static void main(String[] args) {
         new MainMenu().showMainMenu();
     }
