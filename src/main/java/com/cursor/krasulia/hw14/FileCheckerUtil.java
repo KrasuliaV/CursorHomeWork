@@ -111,7 +111,7 @@ public class FileCheckerUtil {
     private static List<String> getStrings(List<String> lines, Path textFile) {
         try (Stream<String> streamLines = Files.lines(textFile)) {
             lines = streamLines.filter(line -> !line.isBlank())
-                    .flatMap(line -> Arrays.stream(line.split(" ").clone()))
+                    .flatMap(line -> Arrays.stream(line.split(" ")))
                     .map(word -> word.replaceAll("[^\\w']", ""))
                     .collect(Collectors.toList());
         } catch (IOException ioException) {
