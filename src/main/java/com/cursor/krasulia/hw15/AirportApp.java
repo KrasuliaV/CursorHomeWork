@@ -1,101 +1,55 @@
 package com.cursor.krasulia.hw15;
 
+import com.cursor.krasulia.hw15.dao.PilotDao;
+import com.cursor.krasulia.hw15.dao.PlaneDao;
 import com.cursor.krasulia.hw15.enteties.Pilot;
 import com.cursor.krasulia.hw15.enteties.Plane;
-import com.cursor.krasulia.hw15.properties.Connector;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AirportApp {
 
-    public static List<Plane> getPlanesList() {
-        List<Plane> planes = new ArrayList<>();
-        String sqlQuery = "SELECT * FROM planes;";
-        try (Connection connection = Connector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    final Plane plane = new Plane();
-                    setPlaneVariables(plane, resultSet);
-                    planes.add(plane);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return planes;
+    private final PilotDao pilotDao;
+    private final PlaneDao planeDao;
+
+    public AirportApp() {
+        this.pilotDao = new PilotDao();
+        this.planeDao = new PlaneDao();
     }
 
-    public static List<Pilot> getPilotsList() {
-        List<Pilot> pilots = new ArrayList<>();
-        String sqlQuery = "SELECT * FROM pilots;";
-
-        try (Connection connection = Connector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    final Pilot pilot = new Pilot();
-                    long id = resultSet.getLong("id");
-                    pilot.setId(id);
-                    pilot.setName(resultSet.getString("name"));
-                    pilot.setAge(resultSet.getInt("age"));
-                    pilot.setPlaneList(getPlanesForOnePilot(id));
-                    pilots.add(pilot);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return pilots;
+    public int countSeats() {
+        return getListWithAvailablePlanes().stream()
+                .map(Plane::getSeats)
+                .reduce(Integer::sum)
+                .orElse(0);
     }
 
-    private static List<Plane> getPlanesForOnePilot(long id) {
-        String sqlQuery = "SELECT plane_id FROM pilots_professionalism WHERE pilot_id = ?;";
-        List<Plane> planes = new ArrayList<>();
-
-        try (Connection connection = Connector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
-            statement.setLong(1, id);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    planes.add(getPlaneById(resultSet.getLong("plane_id")));
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return planes;
+    public List<Plane> getAllPlanes() {
+        return planeDao.getAllPlanesList();
     }
 
-    private static Plane getPlaneById(long id) {
-        String sqlQuery = "SELECT * FROM planes WHERE id = ?;";
-        final Plane plane = new Plane();
-
-        try (Connection connection = Connector.getConnection();
-             PreparedStatement statement = connection.prepareStatement(sqlQuery)) {
-            statement.setLong(1, id);
-
-            try (ResultSet resultSet = statement.executeQuery()) {
-                while (resultSet.next()) {
-                    setPlaneVariables(plane, resultSet);
-                }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        return plane;
+    public List<Pilot> getAllPilots() {
+        return pilotDao.getAllPilotsList();
     }
 
-    private static void setPlaneVariables(Plane plane, ResultSet resultSet) throws SQLException {
-        plane.setId(resultSet.getLong("id"));
-        plane.setModel(resultSet.getString("model"));
-        plane.setSerialNumber(resultSet.getString("serial_number"));
-        plane.setSets(resultSet.getInt("seats"));
+    private List<Plane> getListWithAvailablePlanes() {
+        final List<Pilot> allPilotsList = pilotDao.getAllPilotsList();
+        return planeDao.getAllPlanesList()
+                .stream()
+                .filter(plane -> isThereAvailablePilotsForPlane(plane, allPilotsList))
+                .collect(Collectors.toList());
+    }
+
+    private boolean isThereAvailablePilotsForPlane(Plane plane, List<Pilot> pilots) {
+        final List<Pilot> pilotList = pilots.stream()
+                .filter(pilot -> pilot.getPlaneList().contains(plane))
+                .limit(2)
+                .collect(Collectors.toList());
+        if (pilotList.size() != 2) {
+            return false;
+        }
+        pilots.removeAll(pilotList);
+        return true;
     }
 }

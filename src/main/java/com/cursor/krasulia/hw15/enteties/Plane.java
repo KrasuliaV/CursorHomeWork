@@ -3,8 +3,8 @@ package com.cursor.krasulia.hw15.enteties;
 import lombok.Data;
 
 @Data
-public class Plane extends AbstractEntety {
+public class Plane extends AbstractEntity {
     private String model;
     private String serialNumber;
-    private int sets;
+    private int seats;
 }
